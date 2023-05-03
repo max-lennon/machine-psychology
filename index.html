@@ -82,8 +82,8 @@
                 // .on("mouseout", function() { return tooltip.style("visibility", "hidden"); })
     })
 
-    const express = require('express')
-    const {spawn} = require('child_process');
+    const express = import('express')
+    const {spawn} = import('child_process');
     const app = express()
     const port = 3000
     app.get('/', (req, res) => {
