@@ -109,8 +109,11 @@
           subax.set_xticks([])
           subax.set_yticks([])
       ax1[0].imshow(convolution_example)
+      ax1[0].title.set_text("Original Image")
       ax1[1].imshow(saliency)
+      ax1[1].title.set_text("CAM Heatmap")
       ax1[2].imshow(Image.alpha_composite(transparent_example, im_a))
+      ax1[0].title.set_text("Simulated Attention Composite")
 
       display(fig1, target="saliency-comp")
 
@@ -128,6 +131,16 @@
     <script src="https://d3js.org/d3.v6.js"></script>
     <div id="bar-chart" class="chart"></div>
     <br>
+
+    <div class="explain">
+      <p>
+        The complexity of CNNs can make their final results difficult to interpret. One tool used for gaining an intuition into the classification process is a class activation map (CAM).
+        In a nutshell, a CAM maps the original image according to which regions most stronly influence the prediction of the true class of an image. The example shown below is correctly classified
+        as "goldfish," so the brighter the region of the CAM, the more that region is associated with identifying a goldfish. On the far right, the CAM is used to create a visual mask for the original
+        image, creating a sense of what the classifier is "seeing" by simulating an attention spotlight.
+      </p>
+    </div>
+
     <div id="saliency-comp"></div>
 
     <script>
