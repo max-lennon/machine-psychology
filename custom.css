@@ -4,6 +4,12 @@
     overflow-y: auto;
 }
 
+.image-container {
+    width: 480px;
+    background: gray;
+    overflow-y: auto;
+}
+
 .button-container > button {
     width: 100px;
     height: 100px;
