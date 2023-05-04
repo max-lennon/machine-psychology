@@ -17,6 +17,7 @@
   <body>
     <h2>Understanding Image Classifiers Through Visualization</h2>
 
+    <div>
     <p>Since the early 2010s, convolutional neural networks (CNNs) have set the standard for the task of classifying images into predefined categories.
       The basic operation that gives CNNs their power is the convolution, where an image is transformed using a specialized filter in order to reveal patterns
       such as color, vertical or horizontal edges, different textures, or any combination of these properties.
@@ -27,6 +28,7 @@
       Click on any filter to see the transformed version of the example image. The result will be displayed as a heatmap, where "warmer" regions indicate
       a stronger response to the given filter in that area of the image.
     </p>
+    </div>
 
     <div class="convolution-demo">
       <div class="image-container" id="conv-options">
@@ -60,6 +62,9 @@
       files = ["/assets/filt_np.npy", "/assets/filt_img.npy", "/assets/example_1.JPEG"]
       [splashscreen]
       autoclose = true
+    </py-config>
+    <py-config>
+      terminal = false
     </py-config>
     <py-script>
       from PIL import Image
@@ -101,12 +106,14 @@
       reset_conv_image()
     </py-script>
 
+    <div>
     <p>
       While the initial convolutions made by a model on a RGB image are the most logical choice to visualize, there are many further layers of convolutions
       (transforming the already transformed images) that lead to the complexity that gives CNNs their predictive power. We can represent this complexity quantitatively
       in terms of the total number of parameters that the model contains. Here, a "parameter" is any single numeric value that the model learns during the training process.
       Each convolution operation contains hundreds of parameters on its own.
     </p>
+    </div>
 
     <script src="https://d3js.org/d3.v6.js"></script>
     <div id="bar-chart"></div>
