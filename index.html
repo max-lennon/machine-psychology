@@ -73,14 +73,14 @@
 
       def convolution(id):
         id_num = int(id[-2:])
-        print(id_num)
         conv_filter = np.transpose(filters[id_num], axes=[1, 2, 0])
+        print(conv_filter)
         conv_img = np.dstack([scipy.signal.convolve2d(np.array(convolution_example)[:,:,c], filters[id_num][c], mode='valid') for c in range(3)])
         conv_img = np.mean(conv_img, axis=2)
 
         ax.imshow((conv_img - np.min(conv_img)) / (conv_img.max()-conv_img.min()), cmap='magma')
 
-        display(fig, target="conv-results")
+        display(fig, target="conv-results", append=False)
 
       for filter_idx in [1, 2, 8, 11, 17, 21, 23, 26, 28, 31, 33, 34, 49, 57, 58]:
         button = Element("filter{id:02d}".format(id=filter_idx))
