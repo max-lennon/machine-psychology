@@ -1,13 +1,17 @@
 .button-container {
-    width: 520px;
+    width: 1080px;
     background: gray;
     overflow-y: auto;
 }
 
 .button-container > button {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     float: left;
     background: lightgray;   
-    margin: 15px;
+    margin: 10px;
+}
+
+.button-container > button:focus {
+    background: red;
 }
