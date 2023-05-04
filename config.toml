@@ -1,0 +1,6 @@
+packages = ["matplotlib", "pandas", "numpy", "pillow", "scipy"]
+terminal = false
+[[fetch]]
+files = ["/assets/filt_np.npy", "/assets/filt_img.npy", "/assets/example_1.JPEG"]
+[splashscreen]
+autoclose = true

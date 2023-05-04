@@ -55,15 +55,8 @@
 
       <div class="image-container" id="conv-results"></div>
     </div>
-
-    <py-config>
-      packages = ["matplotlib", "pandas", "numpy", "pillow", "scipy"]
-      terminal = false
-      [[fetch]]
-      files = ["/assets/filt_np.npy", "/assets/filt_img.npy", "/assets/example_1.JPEG"]
-      [splashscreen]
-      autoclose = true
-    </py-config>
+    <br>
+    <py-config src="./config.toml"></py-config>
     <py-script>
       from PIL import Image
       import numpy as np
@@ -112,7 +105,7 @@
       Each convolution operation contains hundreds of parameters on its own.
     </p>
     </div>
-
+    <br>
     <script src="https://d3js.org/d3.v6.js"></script>
     <div id="bar-chart"></div>
 
