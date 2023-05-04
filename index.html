@@ -68,7 +68,7 @@
       import scipy
       from js import document
 
-      width = document.getElementById('image-container').offsetWidth;
+      width = document.getElementById('conv-options').offsetWidth;
       filter_size = int(width * 0.22)
 
       filters = np.load("./assets/filt_np.npy")
@@ -169,7 +169,7 @@
                     .style('opacity', '1.0');
                 return bars.filter(data => data.name !== d.name)
                     .style('opacity', '0.5');  })
-                .on("mouseover", function(e, d) { return tooltip
+            bars.on("mouseover", function(e, d) { return tooltip
                                                             .style("visibility", "visible")
                                                             .style("font-family", "arial")
                                                             .html("Model: " + d.name
