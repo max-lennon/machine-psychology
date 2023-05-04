@@ -39,9 +39,9 @@
     </div>
 
     <py-config>
+      packages = ["matplotlib", "pandas", "numpy", "pillow"]
       [[fetch]]
       files = ["/assets/filt_np.npy", "/assets/fgsm_max.png"]
-      packages = ["matplotlib", "pandas", "numpy", "pillow"]
     </py-config>
     <py-script>
       from PIL import Image
