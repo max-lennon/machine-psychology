@@ -73,6 +73,7 @@
 
       def convolution(id):
         id_num = int(id[-2:])
+        print(id_num)
         conv_filter = np.transpose(filters[id_num], axes=[1, 2, 0])
         conv_img = np.dstack([scipy.signal.convolve2d(np.array(convolution_example)[:,:,c], filters[id_num][c], mode='valid') for c in range(3)])
         conv_img = np.mean(conv_img, axis=2)
@@ -84,6 +85,8 @@
       for filter_idx in [1, 2, 8, 11, 17, 21, 23, 26, 28, 31, 33, 34, 49, 57, 58]:
         button = Element("filter{id:02d}".format(id=filter_idx))
         button.write(Image.fromarray(np.transpose(filter_imgs[filter_idx], axes=[2,1,0]).astype('uint8')).resize((90,90)))
+
+      reset_conv_image()
     </py-script>
 
     <!-- Optional JavaScript -->
