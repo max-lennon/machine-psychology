@@ -3,15 +3,14 @@
 }
 
 .button-container {
-    width: 480px;
+    width: 450px;
     background: gray;
     overflow-y: auto;
 }
 
 .image-container {
-    width: 480px;
-    background: gray;
-    overflow-y: auto;
+    width: 50%;
+    float: left;
 }
 
 .button-container > button {
