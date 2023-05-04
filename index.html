@@ -30,11 +30,11 @@
 
     <div class="menu-container">
       <div class="button-container">
-         <button py-click="current_time()" id="get-time1" class="py-button"></button>
-         <button py-click="current_time()" id="get-time2" class="py-button"></button>
-         <button py-click="current_time()" id="get-time3" class="py-button"></button>
-         <button py-click="current_time()" id="get-time4" class="py-button"></button>
-         <button py-click="current_time()" id="get-time5" class="py-button"></button>
+         <button py-click="update_graphic('get-time01')" id="get-time1" class="py-button"></button>
+         <button py-click="update_graphic('get-time02')" id="get-time02" class="py-button"></button>
+         <button py-click="update_graphic('get-time03')" id="get-time03" class="py-button"></button>
+         <button py-click="update_graphic('get-time04')" id="get-time04" class="py-button"></button>
+         <button py-click="update_graphic('get-time05')" id="get-time05" class="py-button"></button>
       </div>
     </div>
 
@@ -47,11 +47,12 @@
       from PIL import Image
       import numpy as np
       from js import document
-
-      def current_time():
-        print("Time")
-
       filters = np.load("./assets/filt_np.npy")
+
+      def update_graphic(id):
+        curr_elem = Element(id)
+        button1.write(Image.fromarray(np.transpose(filters[int(id[-2:])])).resize((90,90)))
+
       button1 = Element("get-time1")
       button1.write(Image.open('assets/fgsm_max.png').resize((90,90)), append=True)
     </py-script>
