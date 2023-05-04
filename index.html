@@ -69,12 +69,12 @@
 
       def reset_conv_image():
         ax.imshow(convolution_example)
-        display(fig, target="conv-results")
+        display(fig, target="conv-results", append=False)
 
       def convolution(id):
         id_num = int(id[-2:])
         conv_filter = np.transpose(filters[id_num], axes=[1, 2, 0])
-        print(conv_filter)
+        print(conv_filter.min(), conv_filter.max())
         conv_img = np.dstack([scipy.signal.convolve2d(np.array(convolution_example)[:,:,c], filters[id_num][c], mode='valid') for c in range(3)])
         conv_img = np.mean(conv_img, axis=2)
 
