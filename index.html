@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-<!-- Create a div where the graph will live -->
-<div id="chart"></div>
-
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -18,9 +15,20 @@
     <title>CNN Model Visualization</title>
   </head>
   <body>
-    <h1>Understanding Image Classifiers Through Visualization</h1>
+    <h2>Understanding Image Classifiers Through Visualization</h2>
 
-    <div class="menu-container">
+    <p>Since the early 2010s, convolutional neural networks (CNNs) have set the standard for the task of classifying images into predefined categories.
+      The basic operation that gives CNNs their power is the convolution, where an image is transformed using a specialized filter in order to reveal patterns
+      such as color, vertical or horizontal edges, different textures, or any combination of these properties.
+    </p>
+
+    <p>
+      The following are visual representations of some of the convolutional filters found in the first layer of the ResNet50 network architecture.
+      Click on any filter to see the transformed version of the example image. The result will be displayed as a heatmap, where "warmer" regions indicate
+      a stronger response to the given filter in that area of the image.
+    </p>
+
+    <div class="convolution-demo">
       <div class="button-container">
         <button py-click="reset_conv_image()" id="reset00" class="reset-button">Original Image</button>
         <button py-click="convolution('filter01')" id="filter01" class="filter-button"></button>
@@ -88,6 +96,84 @@
 
       reset_conv_image()
     </py-script>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    <div id="bar-chart"></div>
+
+    <script>
+        // Set the dimensions and margins of the graph
+        const margin = {top:20, right:30, left:60, bottom:30},
+        width = 500 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+        const svg = d3.select("#chart")
+                    .append("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                    .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+        //Read in the data
+        d3.csv("model_stats.csv", function(d){
+            return {
+                name: d['model_name'],
+                nparams: +d['nparams'],
+                top_1: +d['top1_acc'],
+                top_5: d['top5_acc']
+            }
+        }).then(function(data){
+            // Add X Scale
+            const x = d3.scaleBand()
+                        .domain(data.map(d => d.name))
+                        .range([0, width])
+                        .padding(0.2);
+
+            // Add Y Scale
+            const y = d3.scaleLinear()
+                        .domain([0, d3.max(data, d => d.nparams)])
+                        .range([height, 0]);
+
+            const color = d3.scaleOrdinal()
+                        .domain(data.map(d => d.name))
+                        .range(d3.schemeSet3)
+
+            var tooltip = d3.select("#chart")
+                             .append("div")
+                             .style("position", "absolute")
+                             .style("visibility", "hidden")
+            // Add axes
+            svg.append("g")
+                .attr("transform", `translate(0, ${height})`)
+                .call(d3.axisBottom(x));
+
+            svg.append("g")
+                .call(d3.axisLeft(y));
+
+            let bars = svg.append("g")
+                .selectAll("bar")
+                .data(data)
+                .join("rect")
+                    .attr("x", function(d) { return x(d.name); })
+                    .attr("y", function(d) { return y(d.nparams); })
+                    .attr("width", function(d) {return x.bandwidth()})
+                    .attr("height", function(d) {return height - y(d.nparams)})
+                    .style("fill", function(d) { return color(d.name); })
+                    .style("opacity", 1.0);
+
+            bars.on('click', function(e, d) {
+                bars.filter(data => data.name === d.name)
+                    .style('opacity', '1.0');
+                return bars.filter(data => data.name !== d.name)
+                    .style('opacity', '0.5');  })
+                .on("mouseover", function(e, d) { return tooltip
+                                                            .style("visibility", "visible")
+                                                            .style("font-family", "arial")
+                                                            .html("Model: " + d.name
+                                                            + " | Top 5 Accuracy: " + d.top_5
+                                                            + " | Top 1 Accuracy: " + d.top_1); });
+        })
+
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -1,0 +1,6 @@
+,model_name,nparams,top1_acc,top5_acc
+0,AlexNet,61100840,63.3,84.6
+1,VGG16,138357544,74.4,91.9
+2,ResNet50,25557032,75.3,92.9
+3,DenseNet169,14149480,76.2,93.15
+4,MobileNetV2,3504872,74.4,92.1
