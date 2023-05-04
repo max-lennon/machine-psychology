@@ -45,11 +45,11 @@
     </div>
 
     <py-config>
-      [splashscreen]
-      autoclose = true
       packages = ["matplotlib", "pandas", "numpy", "pillow", "scipy"]
       [[fetch]]
       files = ["/assets/filt_np.npy", "/assets/filt_img.npy"]
+      [splashscreen]
+      autoclose = true
     </py-config>
     <py-script>
       from PIL import Image
