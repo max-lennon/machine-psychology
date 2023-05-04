@@ -101,6 +101,13 @@
       reset_conv_image()
     </py-script>
 
+    <p>
+      While the initial convolutions made by a model on a RGB image are the most logical choice to visualize, there are many further layers of convolutions
+      (transforming the already transformed images) that lead to the complexity that gives CNNs their predictive power. We can represent this complexity quantitatively
+      in terms of the total number of parameters that the model contains. Here, a "parameter" is any single numeric value that the model learns during the training process.
+      Each convolution operation contains hundreds of parameters on its own.
+    </p>
+
     <script src="https://d3js.org/d3.v6.js"></script>
     <div id="bar-chart"></div>
 
@@ -141,7 +148,7 @@
                         .domain(data.map(d => d.name))
                         .range(d3.schemeSet3)
 
-            var tooltip = d3.select("#chart")
+            var tooltip = d3.select("#bar-chart")
                              .append("div")
                              .style("position", "absolute")
                              .style("visibility", "hidden")
