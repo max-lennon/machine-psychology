@@ -30,6 +30,7 @@
       </p>
     </div>
 
+    <div class="supercontainer">
     <div class="convolution-demo">
       <div class="image-container" id="conv-options">
         <div class="button-container">
@@ -64,7 +65,7 @@
       from js import document
 
       width = document.getElementById('conv-options').offsetWidth;
-      filter_size = int(width * 0.22)
+      filter_size = int(width * 0.20)
 
       filters = np.load("./assets/filt_np.npy")
       filter_imgs = np.load("./assets/filt_img.npy")
@@ -118,6 +119,7 @@
       display(fig1, target="saliency-comp")
 
     </py-script>
+    </div>
     <br><p></p><br>
     <div class="explain">
       <p>
