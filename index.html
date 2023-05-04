@@ -15,12 +15,6 @@
     <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <link rel="stylesheet" href="./custom.css">
 
-    <py-config>
-      [[fetch]]
-      files = ["./assets/filt_np.npy", "./assets/fgsm_max.png"]
-      packages = ["matplotlib", "pandas", "numpy", "pillow"]
-    </py-config>
-
     <title>Hello, world!</title>
   </head>
   <body>
@@ -44,6 +38,10 @@
       </div>
     </div>
 
+    <py-config>
+      
+      packages = ["matplotlib", "pandas", "numpy", "pillow"]
+    </py-config>
     <py-script>
       from PIL import Image
       import numpy as np
