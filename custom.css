@@ -4,7 +4,7 @@
     overflow-y: auto;
 }
 
-.button-container > a {
+.button-container > button {
     width: 100px;
     height: 100px;
     float: left;

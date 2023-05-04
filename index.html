@@ -30,11 +30,11 @@
 
     <div class="menu-container">
       <div class="button-container">
-         <a href="#/Action1" class="button" id="button1">Action1</a>
-         <a href="#/Action2" class="button">Action2</a>
-         <a href="#/Action3" class="button">Action3</a>
-         <a href="#/Action4" class="button">Action4</a>
-         <a href="#/Action5" class="button">Action5</a>
+         <button py-click="current_time()" id="get-time1" class="py-button">Get current time</button>
+         <button py-click="current_time()" id="get-time2" class="py-button">Get current time</button>
+         <button py-click="current_time()" id="get-time3" class="py-button">Get current time</button>
+         <button py-click="current_time()" id="get-time4" class="py-button">Get current time</button>
+         <button py-click="current_time()" id="get-time5" class="py-button">Get current time</button>
       </div>
     </div>
 
@@ -47,9 +47,13 @@
       from PIL import Image
       import numpy as np
       from js import document
+
+      def current_time():
+        print("Time")
+
       filters = np.load("./assets/filt_np.npy")
       button1 = Element("button1")
-      button1.write(Image.open('assets/fgsm_max.png'), append=True)
+      button1.write(Image.open('assets/fgsm_max.png').resize((50,50)), append=True)
     </py-script>
 
     <!-- Optional JavaScript -->
