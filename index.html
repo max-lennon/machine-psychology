@@ -55,7 +55,6 @@
 
       <div class="image-container" id="conv-results"></div>
     </div>
-    <br><p></p><br>
     <py-config src="./config.toml"></py-config>
     <py-script>
       from PIL import Image
@@ -109,14 +108,14 @@
           subax.yaxis.set_tick_params(labelleft=False)
           subax.set_xticks([])
           subax.set_yticks([])
-      ax1[0].imshow(fishy)
+      ax1[0].imshow(convolution_example)
       ax1[1].imshow(saliency)
-      ax1[2].imshow(Image.alpha_composite(transparent_fishy, im_a))
+      ax1[2].imshow(Image.alpha_composite(transparent_example, im_a))
 
       display(fig1, target="saliency-comp")
 
     </py-script>
-    <br>
+    <br><p></p><br>
     <div class="explain">
       <p>
         While the initial convolutions made by a model on a RGB image are the most logical choice to visualize, there are many further layers of convolutions
@@ -127,7 +126,7 @@
     </div>
     <br>
     <script src="https://d3js.org/d3.v6.js"></script>
-    <div id="bar-chart"></div>
+    <div id="bar-chart" class="chart"></div>
     <br>
     <div id="saliency-comp"></div>
 

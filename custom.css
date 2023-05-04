@@ -29,3 +29,7 @@
 .button-container > button:focus {
     background: red;
 }
+
+.chart {
+    padding: 50px;
+}
