@@ -99,7 +99,7 @@
       neg_saliency = 255 - saliency
       transparent_example = Image.open("./assets/example_1.JPEG")
       transparent_example.putalpha(Image.fromarray(saliency))
-      im_a = Image.new("RGBA", fishy.size, 0)
+      im_a = Image.new("RGBA", convolution_example.size, 0)
       im_a.putalpha(neg_saliency)
 
       fig1, ax1 = plt.subplots(1, 3, figsize=(12,4))
