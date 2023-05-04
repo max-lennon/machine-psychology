@@ -1,9 +1,7 @@
 .convolution-demo {
-    width: 1000px;
 }
 
 .button-container {
-    width: 450px;
     background: gray;
     overflow-y: auto;
 }
@@ -14,11 +12,11 @@
 }
 
 .button-container > button {
-    width: 100px;
-    height: 100px;
+    width: 10%;
+    height: 10%;
     float: left;
     background: lightgray;   
-    margin: 5px;
+    margin: 0.5%;
 }
 
 .button-container > button:focus {

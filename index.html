@@ -84,7 +84,6 @@
       def convolution(id):
         id_num = int(id[-2:])
         conv_filter = np.transpose(filters[id_num], axes=[1, 2, 0])
-        print(conv_filter.min(), conv_filter.max())
         conv_img = np.dstack([scipy.signal.convolve2d(np.array(convolution_example)[:,:,c], filters[id_num][c], mode='valid') for c in range(3)])
         conv_img = np.mean(conv_img, axis=2)
 
@@ -108,7 +107,7 @@
         width = 500 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
-        const svg = d3.select("#chart")
+        const svg = d3.select("#bar-chart")
                     .append("svg")
                     .attr("width", width + margin.left + margin.right)
                     .attr("height", height + margin.top + margin.bottom)
