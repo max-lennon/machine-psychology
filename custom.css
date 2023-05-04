@@ -2,13 +2,18 @@
     padding: 20px;
 }
 
+.explain {
+    padding: 30px;
+}
+
 .button-container {
     background: gray;
     overflow-y: auto;
 }
 
 .image-container {
-    width: 50%;
+    width: 49%;
+    height:100%
     float: left;
     padding: 2%;
 }
