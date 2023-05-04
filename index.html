@@ -57,6 +57,7 @@
       from matplotlib import pyplot as plt
       import scipy
       from js import document
+
       filters = np.load("./assets/filt_np.npy")
       filter_imgs = np.load("./assets/filt_img.npy")
       convolution_example = Image.open("./assets/example_1.JPEG")
@@ -73,7 +74,7 @@
       def convolution(id):
         curr_elem = Element(id)
         conv_filter = np.transpose(filters[int(id[-2:])], axes=[1, 2, 0])
-        conv_img = np.dstack([scipy.signal.convolve2d(np.array(fishy)[:,:,c], filt_np[27][c], mode='valid') for c in range(3)])
+        conv_img = np.dstack([scipy.signal.convolve2d(np.array(convolution_example)[:,:,c], filt_np[27][c], mode='valid') for c in range(3)])
         conv_img = np.mean(conv_img, axis=2)
 
         ax.imshow((conv_img - np.min(conv_img)) / (conv_img.max()-conv_img.min()), cmap='magma')
@@ -91,13 +92,3 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
-
-Traceback (most recent call last):
-  File "/lib/python3.10/_pyodide/_base.py", line 460, in eval_code
-    .run(globals, locals)
-  File "/lib/python3.10/_pyodide/_base.py", line 306, in run
-    coroutine = eval(self.code, globals, locals)
-  File "<exec>", line 1, in <module>
-  File "<exec>", line 11, in convolution
-  File "<exec>", line 11, in <listcomp>
-NameError: name 'scipy' is not defined
